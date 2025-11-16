@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 15th Birthday, Abira! 🎉</title>
+    <style>
+        /* CSS: Main Design based on the provided card image */
+        :root {
+            --text-color-overlay: #FFFFFF; 
+            --note-bg-color: rgba(255, 105, 180, 0.85); 
+            --repeating-text-bg-color: rgba(255, 240, 245, 0.9); 
+            --accent-purple: #9932CC; 
+        }
+
+        body {
+            font-family: 'Georgia', serif; 
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            background-color: #333; 
+            position: relative; 
+        }
+
+        .main-card-display {
+            width: 100%;
+            max-width: 800px; 
+            /* *** CORRECTION 1: Defined Height to contain the image better *** */
+            height: 900px; 
+            background-image: url('Gemini_Generated_Image_1mw2vc1mw2vc1mw2.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            position: relative;
+            margin: 20px 0;
+            /* Flex properties removed as we are using absolute positioning for overlay */
+        }
+
+        /* Overlay for the note and repeating messages */
+        .overlay-container {
+            position: absolute; /* Position relative to the body/viewport */
+            top: 20px; /* Aligns to the top margin of the body */
+            width: 100%;
+            max-width: 800px; /* Same max width as the card display */
+            height: 900px; /* Same height as the card display */
+            pointer-events: none; /* Allows clicks to go through to the background if needed */
+        }
+
+        .overlay-content {
+            z-index: 10;
+            width: 90%; 
+            max-width: 600px;
+            margin: 0 auto;
+            /* *** CORRECTION 2: Use margin-top to position the note closer to the top of the card image *** */
+            margin-top: 50px; 
+            pointer-events: auto; /* Re-enable pointer events for interaction */
+        }
+
+        .note {
+            background-color: var(--note-bg-color);
+            color: var(--text-color-overlay);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px; 
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-align: center; 
+            border: 2px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-family: 'Times New Roman', serif; 
+        }
+
+        .note p {
+            margin: 5px 0;
+        }
+
+        .repeating-text-container {
+            max-height: 250px; 
+            overflow-y: scroll; 
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--accent-purple);
+            background-color: var(--repeating-text-bg-color);
+            border-radius: 10px;
+            margin-top: 25px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .decorative-text {
+            font-size: 1em;
+            line-height: 1.7;
+            color: var(--accent-purple);
+            font-weight: bold;
+            font-family: 'Arial', sans-serif; 
+        }
+
+        /* White Spots/Confetti Effect */
+        .white-spots {
+            position: fixed; 
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.9); 
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.7);
+            z-index: 999; 
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-card-display {
+                max-width: 95%;
+                height: 700px; /* Smaller height for mobile */
+            }
+            .overlay-content {
+                margin-top: 30px;
+            }
+            .note {
+                font-size: 1em;
+                padding: 15px;
+            }
+            .repeating-text-container {
+                max-width: 95%;
+                padding: 10px;
+                max-height: 200px;
+            }
+            .decorative-text {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-card-display">
+        </div>
+
+    <div class="overlay-container">
+        <div class="overlay-content">
+            <div class="note">
+                <p style="font-weight: bold; font-size: 1.1em;">Happy 15th Birthday, dear Abira!</p>
+                <p>Watching you grow into the incredible person you are has been such a joy. May this next year bring even more sparkle, exciting adventures, and all the dreams your beautiful heart desires.</p>
+                <p>Here's to more memories, endless smiles, and embracing every moment of this beautiful journey ahead! Keep shining, you're truly one of a kind!</p>
+            </div>
+
+            <div class="repeating-text-container">
+                <div id="decorative-message" class="decorative-text">
+                    </div>
+                <p style="font-size:0.7em; color: gray; margin-top: 10px;">(Scroll down for 100 more birthday wishes!)</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JAVASCRIPT: WHITE SPOTS AND REPEATING TEXT LOGIC
+
+        // 1. Decorative Text Injection (100x)
+        const message = '🎉🎂 Hαppч Bírthdαч! 🥳🎁';
+        const container = document.getElementById('decorative-message');
+        let fullMessage = '';
+        for (let i = 0; i < 100; i++) {
+            fullMessage += message + '<br>';
+        }
+        container.innerHTML = fullMessage;
+
+        // 2. White Spots/Confetti Effect
+        function createSpot() {
+            const spot = document.createElement('div');
+            spot.classList.add('white-spots');
+            
+            // Random position across the whole screen
+            spot.style.left = Math.random() * 100 + 'vw';
+            spot.style.top = Math.random() * 100 + 'vh';
+            
+            // Random size between 3px and 10px
+            const size = Math.random() * 7 + 3;
+            spot.style.width = size + 'px';
+            spot.style.height = size + 'px';
+            
+            // Random animation delay and duration for subtle movement
+            spot.style.animation = `fade-in-out ${Math.random() * 5 + 5}s linear infinite, move ${Math.random() * 8 + 8}s linear infinite`; 
+
+            document.body.appendChild(spot);
+
+            // Clean up old spots after they are off-screen to prevent slowdown
+            setTimeout(() => spot.remove(), 12000); 
+        }
+
+        // Create a continuous stream of spots
+        setInterval(createSpot, 200); 
+
+        // CSS for the spot movement (embedded in JavaScript for completeness)
+        const styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        styleSheet.innerText = `
+            @keyframes fade-in-out {
+                0%, 100% { opacity: 0; }
+                50% { opacity: 0.9; }
+            }
+            @keyframes move {
+                0% { transform: translateY(0) rotate(0deg); }
+                100% { transform: translateY(-100vh) rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+        
+    </script>
+</body>
+</html>
