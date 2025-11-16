@@ -29,7 +29,6 @@
         .main-card-display {
             width: 100%;
             max-width: 800px; 
-            /* *** CORRECTION 1: Defined Height to contain the image better *** */
             height: 900px; 
             background-image: url('Gemini_Generated_Image_1mw2vc1mw2vc1mw2.jpg'); 
             background-size: cover;
@@ -39,17 +38,16 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
             position: relative;
             margin: 20px 0;
-            /* Flex properties removed as we are using absolute positioning for overlay */
         }
 
         /* Overlay for the note and repeating messages */
         .overlay-container {
-            position: absolute; /* Position relative to the body/viewport */
-            top: 20px; /* Aligns to the top margin of the body */
+            position: absolute; 
+            top: 20px; 
             width: 100%;
-            max-width: 800px; /* Same max width as the card display */
-            height: 900px; /* Same height as the card display */
-            pointer-events: none; /* Allows clicks to go through to the background if needed */
+            max-width: 800px; 
+            height: 900px; 
+            pointer-events: none; 
         }
 
         .overlay-content {
@@ -57,9 +55,8 @@
             width: 90%; 
             max-width: 600px;
             margin: 0 auto;
-            /* *** CORRECTION 2: Use margin-top to position the note closer to the top of the card image *** */
             margin-top: 50px; 
-            pointer-events: auto; /* Re-enable pointer events for interaction */
+            pointer-events: auto; 
         }
 
         .note {
@@ -116,7 +113,7 @@
         @media (max-width: 768px) {
             .main-card-display {
                 max-width: 95%;
-                height: 700px; /* Smaller height for mobile */
+                height: 700px; 
             }
             .overlay-content {
                 margin-top: 30px;
@@ -138,6 +135,7 @@
 </head>
 <body>
 
+    <audio src="Kanaa - Othaiyadi Pathayila Lyric Aishwarya Rajesh Dhibu Ninan Thomas Arunraja Kamaraj SK.mp3" autoplay loop></audio>
     <div class="main-card-display">
         </div>
 
